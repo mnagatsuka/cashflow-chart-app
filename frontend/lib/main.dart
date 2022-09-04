@@ -96,37 +96,90 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Revenue and Expenditure Table',
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            DataTable(
-              columns: [
-                DataColumn(
-                  label: Text('Date'),
-                ),
-                DataColumn(
-                  label: Text('Revenue'),
-                ),
-                DataColumn(
-                  label: Text('Expediture'),
-                ),
-                DataColumn(
-                  label: Text('profit'),
-                ),
-              ],
-              rows: [
-                DataRow(
-                  cells: [
-                    DataCell(Text('20220903')),
-                    DataCell(Text('100')),
-                    DataCell(Text('10')),
-                    DataCell(Text('90')),
-                  ],
-                ),
-              ],
+            Container(
+              width: 700,
+              height: 500,
+              child:
+                DataTable(
+                columns: [
+                  DataColumn(
+                    label: Text('Date'),
+                  ),
+                  DataColumn(
+                    label: Text('Revenue'),
+                  ),
+                  DataColumn(
+                    label: Text('Expediture'),
+                  ),
+                  DataColumn(
+                    label: Text('profit'),
+                  ),
+                ],
+                rows: [
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220901')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220902')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220903')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220904')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220905')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220906')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220907')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
