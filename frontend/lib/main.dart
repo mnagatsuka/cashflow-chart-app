@@ -11,11 +11,11 @@ class CashFlowApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Cash Flow App',
+      title: '資金繰り表アプリ',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const DataListPage(title: 'Revenue and Expenditure List'),
+      home: const DataListPage(title: '収支一覧'),
     );
   }
 }
@@ -48,7 +48,7 @@ class _DataListPageState extends State<DataListPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Revenue and Expenditure Table',
+              '収支一覧',
             ),
             //Text(
             //  '$_counter',
@@ -61,13 +61,13 @@ class _DataListPageState extends State<DataListPage> {
                 DataTable(
                 columns: [
                   DataColumn(
-                    label: Text('Date'),
+                    label: Text('日付'),
                   ),
                   DataColumn(
-                    label: Text('Revenue'),
+                    label: Text('収入'),
                   ),
                   DataColumn(
-                    label: Text('Expediture'),
+                    label: Text('支出'),
                   ),
                 ],
                 rows: [
@@ -141,7 +141,7 @@ class _DataListPageState extends State<DataListPage> {
                       );
                     },
                     child: Text(
-                      'Add Data Page', style: TextStyle(color: Colors.white)
+                      '収支登録', style: TextStyle(color: Colors.white)
                     ),
                   ),
                 ),
@@ -156,12 +156,12 @@ class _DataListPageState extends State<DataListPage> {
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) {
                           // 遷移先の画面としてリスト追加画面を指定
-                          return CashFlowPage(title: 'Cash Flow');
+                          return CashFlowPage(title: '資金繰り表');
                         }),
                       );
                     },
                     child: Text(
-                      'Cash Flow Page', style: TextStyle(color: Colors.white)
+                      '資金繰り表', style: TextStyle(color: Colors.white)
                     ),
                   ),
                 ),
@@ -197,21 +197,21 @@ class DataAddPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Revenue and Expenditure Add'),
+        title: Text('収支登録'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Input Today\'s Revenue and Expenditure'
+              '本日の収支を登録してください'
             ),
             const SizedBox(height: 8),
             SizedBox(
               width: 400,
               child: TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Date',
+                  labelText: '日付',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -220,7 +220,7 @@ class DataAddPage extends StatelessWidget {
               width: 400,
               child: TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Revenue',
+                  labelText: '収入',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -229,7 +229,7 @@ class DataAddPage extends StatelessWidget {
               width: 400,
               child: TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Expenditure',
+                  labelText: '支出',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -289,7 +289,7 @@ class _CashFlowPageState extends State<CashFlowPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Cash Flow Table',
+              '資金繰り表',
             ),
             //Text(
             //  '$_counter',
@@ -302,76 +302,93 @@ class _CashFlowPageState extends State<CashFlowPage> {
                 DataTable(
                 columns: [
                   DataColumn(
-                    label: Text('Date'),
+                    label: Text('日付'),
                   ),
                   DataColumn(
-                    label: Text('Revenue'),
+                    label: Text('前月繰越'),
                   ),
                   DataColumn(
-                    label: Text('Expediture'),
+                    label: Text('収入'),
                   ),
                   DataColumn(
-                    label: Text('Profit'),
+                    label: Text('支出'),
                   ),
                   DataColumn(
-                    label: Text('Profit'),
+                    label: Text('収支'),
+                  ),
+                  DataColumn(
+                    label: Text('翌月繰越'),
                   ),
                 ],
                 rows: [
                   DataRow(
                     cells: [
                       DataCell(Text('20220901')),
+                      DataCell(Text('1000')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
                       DataCell(Text('90')),
+                      DataCell(Text('10')),
                     ],
                   ),
                   DataRow(
                     cells: [
                       DataCell(Text('20220902')),
+                      DataCell(Text('1000')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
                       DataCell(Text('90')),
+                      DataCell(Text('10')),
                     ],
                   ),
                   DataRow(
                     cells: [
                       DataCell(Text('20220903')),
+                      DataCell(Text('1000')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
                       DataCell(Text('90')),
+                      DataCell(Text('10')),
                     ],
                   ),
                   DataRow(
                     cells: [
                       DataCell(Text('20220904')),
+                      DataCell(Text('1000')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
                       DataCell(Text('90')),
+                      DataCell(Text('10')),
                     ],
                   ),
                   DataRow(
                     cells: [
                       DataCell(Text('20220905')),
+                      DataCell(Text('1000')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
                       DataCell(Text('90')),
+                      DataCell(Text('10')),
                     ],
                   ),
                   DataRow(
                     cells: [
                       DataCell(Text('20220906')),
+                      DataCell(Text('1000')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
                       DataCell(Text('90')),
+                      DataCell(Text('10')),
                     ],
                   ),
                   DataRow(
                     cells: [
                       DataCell(Text('20220907')),
+                      DataCell(Text('1000')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
                       DataCell(Text('90')),
+                      DataCell(Text('10')),
                     ],
                   ),
                 ],
@@ -390,12 +407,12 @@ class _CashFlowPageState extends State<CashFlowPage> {
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) {
                           // 遷移先の画面としてリスト追加画面を指定
-                          return DataListPage(title: 'Revenue and Expenditure List');
+                          return DataListPage(title: '収支一覧');
                         }),
                       );
                     },
                     child: Text(
-                      'Cash Flow Page', style: TextStyle(color: Colors.white)
+                      '収支一覧', style: TextStyle(color: Colors.white)
                     ),
                   ),
                 ),
@@ -414,7 +431,7 @@ class _CashFlowPageState extends State<CashFlowPage> {
                       );
                     },
                     child: Text(
-                      'Add Data Page', style: TextStyle(color: Colors.white)
+                      '収支登録', style: TextStyle(color: Colors.white)
                     ),
                   ),
                 ),
