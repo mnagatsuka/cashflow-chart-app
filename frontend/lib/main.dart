@@ -69,9 +69,6 @@ class _DataListPageState extends State<DataListPage> {
                   DataColumn(
                     label: Text('Expediture'),
                   ),
-                  DataColumn(
-                    label: Text('Profit'),
-                  ),
                 ],
                 rows: [
                   DataRow(
@@ -79,7 +76,6 @@ class _DataListPageState extends State<DataListPage> {
                       DataCell(Text('20220901')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
-                      DataCell(Text('90')),
                     ],
                   ),
                   DataRow(
@@ -87,7 +83,6 @@ class _DataListPageState extends State<DataListPage> {
                       DataCell(Text('20220902')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
-                      DataCell(Text('90')),
                     ],
                   ),
                   DataRow(
@@ -95,7 +90,6 @@ class _DataListPageState extends State<DataListPage> {
                       DataCell(Text('20220903')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
-                      DataCell(Text('90')),
                     ],
                   ),
                   DataRow(
@@ -103,7 +97,6 @@ class _DataListPageState extends State<DataListPage> {
                       DataCell(Text('20220904')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
-                      DataCell(Text('90')),
                     ],
                   ),
                   DataRow(
@@ -111,7 +104,6 @@ class _DataListPageState extends State<DataListPage> {
                       DataCell(Text('20220905')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
-                      DataCell(Text('90')),
                     ],
                   ),
                   DataRow(
@@ -119,7 +111,6 @@ class _DataListPageState extends State<DataListPage> {
                       DataCell(Text('20220906')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
-                      DataCell(Text('90')),
                     ],
                   ),
                   DataRow(
@@ -127,12 +118,55 @@ class _DataListPageState extends State<DataListPage> {
                       DataCell(Text('20220907')),
                       DataCell(Text('100')),
                       DataCell(Text('10')),
-                      DataCell(Text('90')),
                     ],
                   ),
                 ],
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  // 横幅いっぱいに広げる
+                  // width: double.infinity,
+                  // リスト追加ボタン
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // "push"で新規画面に遷移
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) {
+                          // 遷移先の画面としてリスト追加画面を指定
+                          return DataAddPage();
+                        }),
+                      );
+                    },
+                    child: Text(
+                      'Add Data Page', style: TextStyle(color: Colors.white)
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  // 横幅いっぱいに広げる
+                  // width: double.infinity,
+                  // リスト追加ボタン
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // "push"で新規画面に遷移
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) {
+                          // 遷移先の画面としてリスト追加画面を指定
+                          return CashFlowPage(title: 'Cash Flow');
+                        }),
+                      );
+                    },
+                    child: Text(
+                      'Cash Flow Page', style: TextStyle(color: Colors.white)
+                    ),
+                  ),
+                ),
+              ]
+            )
           ],
         ),
       ),
@@ -220,6 +254,190 @@ class DataAddPage extends StatelessWidget {
         onPressed: () {
         // "pop"で前の画面に戻る
           Navigator.of(context).pop();
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class CashFlowPage extends StatefulWidget {
+  const CashFlowPage({super.key, required this.title});
+  final String title;
+
+  @override
+  State<CashFlowPage> createState() => _CashFlowPageState();
+}
+
+class _CashFlowPageState extends State<CashFlowPage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'Cash Flow Table',
+            ),
+            //Text(
+            //  '$_counter',
+            //  style: Theme.of(context).textTheme.headline4,
+            //),
+            Container(
+              width: 700,
+              height: 500,
+              child:
+                DataTable(
+                columns: [
+                  DataColumn(
+                    label: Text('Date'),
+                  ),
+                  DataColumn(
+                    label: Text('Revenue'),
+                  ),
+                  DataColumn(
+                    label: Text('Expediture'),
+                  ),
+                  DataColumn(
+                    label: Text('Profit'),
+                  ),
+                  DataColumn(
+                    label: Text('Profit'),
+                  ),
+                ],
+                rows: [
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220901')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220902')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220903')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220904')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220905')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220906')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                  DataRow(
+                    cells: [
+                      DataCell(Text('20220907')),
+                      DataCell(Text('100')),
+                      DataCell(Text('10')),
+                      DataCell(Text('90')),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  // 横幅いっぱいに広げる
+                  // width: double.infinity,
+                  // リスト追加ボタン
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // "push"で新規画面に遷移
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) {
+                          // 遷移先の画面としてリスト追加画面を指定
+                          return DataListPage(title: 'Revenue and Expenditure List');
+                        }),
+                      );
+                    },
+                    child: Text(
+                      'Cash Flow Page', style: TextStyle(color: Colors.white)
+                    ),
+                  ),
+                ),
+                Container(
+                  // 横幅いっぱいに広げる
+                  // width: double.infinity,
+                  // リスト追加ボタン
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // "push"で新規画面に遷移
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) {
+                          // 遷移先の画面としてリスト追加画面を指定
+                          return DataAddPage();
+                        }),
+                      );
+                    },
+                    child: Text(
+                      'Add Data Page', style: TextStyle(color: Colors.white)
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+              ]
+            )
+          ],
+        ),
+      ),
+      //floatingActionButton: FloatingActionButton(
+      //  onPressed: _incrementCounter,
+      //  tooltip: 'Increment',
+      //  child: const Icon(Icons.add),
+      //), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // "push"で新規画面に遷移
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) {
+              // 遷移先の画面としてリスト追加画面を指定
+              return DataAddPage();
+            }),
+          );
         },
         child: Icon(Icons.add),
       ),
