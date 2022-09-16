@@ -229,6 +229,52 @@ class DataAddPage extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  // 横幅いっぱいに広げる
+                  // width: double.infinity,
+                  // リスト追加ボタン
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // "push"で新規画面に遷移
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) {
+                          // 遷移先の画面としてリスト追加画面を指定
+                          return DataListPage(title: '収支一覧');
+                        }),
+                      );
+                    },
+                    child: Text(
+                      '収支一覧', style: TextStyle(color: Colors.white)
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  // 横幅いっぱいに広げる
+                  // width: double.infinity,
+                  // リスト追加ボタン
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // "push"で新規画面に遷移
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) {
+                          // 遷移先の画面としてリスト追加画面を指定
+                          return CashFlowPage(title: 'Cash Flow');
+                        }),
+                      );
+                    },
+                    child: Text(
+                      '資金繰り表', style: TextStyle(color: Colors.white)
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+              ]
+            )
           ],
         ),
       ),
@@ -391,6 +437,7 @@ class _CashFlowPageState extends State<CashFlowPage> {
                     ),
                   ),
                 ),
+                const SizedBox(width: 8),
                 Container(
                   // 横幅いっぱいに広げる
                   // width: double.infinity,
