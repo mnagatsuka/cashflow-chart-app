@@ -34,3 +34,31 @@ exports.getPaymentList = functions.region("asia-northeast1")
         res.send(error);
       }
     });
+
+exports.getPaymentById = functions.region("asia-northeast1")
+    .https.onRequest(async (req, res) => {
+      functions.logger.info("Get Payment by Id", { structuredData: true });
+      const strId = req.query.id;
+      const id = Number(strId);
+      // console.log(`query: ${req.query.id}`);
+      console.log(`id: ${id}`);
+      data = [];
+      try {
+        const querySnapshot = await db.collection("Payment").where("id", "==", id).get();
+        querySnapshot.forEach( (doc) => {
+          data.push({
+            id: doc.id,
+            category: doc.category,
+            amount: doc.amount,
+            ...doc.data()
+          });
+        });
+        res.send({
+          message: "Get Payment by Id",
+          data: data
+        });  
+      } catch (error) {
+        console.log(error);
+        res.send(error);
+      }
+    });
