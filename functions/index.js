@@ -1,11 +1,14 @@
 const functions = require("firebase-functions");
-const {Datastore} = require("@google-cloud/datastore");
-const datastore = new Datastore({
-	projectId: 'cashflowapp-dev',
-	keyFilename: 'YOUR_DATASTORE_CREDENTIAL_FILE_NAME.json'
-});
+// const {Datastore} = require("@google-cloud/datastore");
+const admin = require("firebase-admin");
+admin.initializeApp();
+const db = admin.firestore();
 
-
+// const datastore = new Datastore();
+// const datastore = new Datastore({
+// 	projectId: 'cashflowapp-dev',
+// 	keyFilename: 'YOUR_DATASTORE_CREDENTIAL_FILE_NAME.json'
+// });
 
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -16,22 +19,25 @@ const datastore = new Datastore({
 // });
 
 exports.getPaymentList = functions.region("asia-northeast1")
-    .https.onRequest((request, response) => {
+    .https.onRequest(async (request, response) => {
       functions.logger.info("Get Payment List", {structuredData: true});
-      const datastore = new Datastore({
-        // projectId: "cashflowapp-dev",
-      });
-      console.log(datastore);
-      // const query = datastore
-      //     .createQuery("Payment")
-      //     .order("paymentDate", {
-      //       descending: true,
-      //     });
-      // const [payments] = await datastore.runQuery(query);
-      // console.log("Payments:");
-      // payments.forEach((payments) => {
-      // console.log(payments);
-      // });
-
-      response.send("Get Payment List");
+      data = [];
+      try {
+        const querySnapshot = await db.collection("Payment").get();
+        querySnapshot.forEach((doc) => {
+          data.push({
+            id: doc.id,
+            category: doc.category,
+            amount: doc.amount,
+            ...doc.data()
+          });
+        });
+        response.send({
+          message: "Get Payment List",
+          data: data
+        });  
+      } catch (error) {
+        console.log(error);
+        response.send(error);
+      }
     });
