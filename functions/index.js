@@ -1,14 +1,7 @@
 const functions = require("firebase-functions");
-// const {Datastore} = require("@google-cloud/datastore");
 const admin = require("firebase-admin");
 admin.initializeApp();
 const db = admin.firestore();
-
-// const datastore = new Datastore();
-// const datastore = new Datastore({
-// 	projectId: 'cashflowapp-dev',
-// 	keyFilename: 'YOUR_DATASTORE_CREDENTIAL_FILE_NAME.json'
-// });
 
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
