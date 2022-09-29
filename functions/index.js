@@ -6,13 +6,13 @@ const db = admin.firestore();
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
 
-// exports.helloWorld = functions.https.onRequest((request, response) => {
+// exports.helloWorld = functions.https.onRequest((req, res) => {
 //   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
+//   res.send("Hello from Firebase!");
 // });
 
 exports.getPaymentList = functions.region("asia-northeast1")
-    .https.onRequest(async (request, response) => {
+    .https.onRequest(async (req, res) => {
       functions.logger.info("Get Payment List", {structuredData: true});
       data = [];
       try {
@@ -25,12 +25,12 @@ exports.getPaymentList = functions.region("asia-northeast1")
             ...doc.data()
           });
         });
-        response.send({
+        res.send({
           message: "Get Payment List",
           data: data
         });  
       } catch (error) {
         console.log(error);
-        response.send(error);
+        res.send(error);
       }
     });
