@@ -62,3 +62,31 @@ exports.getPaymentById = functions.region("asia-northeast1")
         res.send(error);
       }
     });
+
+exports.createPayment = functions.region("asia-northeast1")
+    .https.onRequest(async (req, res) => {
+      const { category, amount, paymentDate } = req.body;
+      const createdAt = new Date().toISOString();
+      try {
+        const docRef = await db
+          .collection("Payment")
+          .add({
+            category,
+            amount,
+            paymentDate,
+            createdAt,
+          });
+          const querySnapshot = await docRef.get();
+        const createdPayment = {
+          id: querySnapshot.id,
+          ...querySnapshot.data(),
+        }
+        res.send({
+          message: "Create Payment",
+          data: createdPayment
+        });  
+      } catch (error) {
+        console.log(error);
+        res.send(error);
+      }
+    });
