@@ -76,7 +76,7 @@ exports.createPayment = functions.region("asia-northeast1")
             paymentDate,
             createdAt,
           });
-          const querySnapshot = await docRef.get();
+        const querySnapshot = await docRef.get();
         const createdPayment = {
           id: querySnapshot.id,
           ...querySnapshot.data(),
