@@ -90,3 +90,31 @@ exports.createPayment = functions.region("asia-northeast1")
         res.send(error);
       }
     });
+
+exports.updatePayment = functions.region("asia-northeast1")
+    .https.onRequest(async (req, res) => {
+      const { id, category, amount, paymentDate } = req.body;
+      const updatedAt = admin.firestore.FieldValue.serverTimestamp();
+      const data = {
+        category: category,
+        amount: amount,
+        paymentDate: paymentDate,
+        updatedAt: updatedAt,
+      };
+      const updateData = Object.fromEntries(Object.entries(data).filter(([key, value]) => typeof value !== "undefined"))
+      // console.log(updateData);
+
+      try {
+        await db
+          .collection("Payment")
+          .doc(id)
+          .update(updateData);
+        res.send({
+          message: "Update Payment",
+          data: {id: id},
+        });  
+      } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+      }
+    });
