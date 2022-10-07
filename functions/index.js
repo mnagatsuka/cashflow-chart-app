@@ -118,3 +118,22 @@ exports.updatePayment = functions.region("asia-northeast1")
         res.status(500).send(error);
       }
     });
+
+exports.deletePayment = functions.region("asia-northeast1")
+    .https.onRequest(async (req, res) => {
+      const id = req.query.id;
+      // console.log(id);
+      try {
+        await db
+          .collection("Payment")
+          .doc(id)
+          .delete();
+        res.send({
+          message: "Delete Payment",
+          data: {id: id},
+        });  
+      } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+      }
+    });
